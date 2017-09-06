@@ -2,15 +2,21 @@
 <html>
     <head>
         <title>title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="src/ie8polyfill.js"></script>
-        <script src='src/jquery-1.8.3.min.js'></script>
-        <script src='src/jquery.json.js'></script>
+        <meta charset="UTF-8" />        
     </head>
     <body>
         <div id="my-app">You must run Web Server...</div>
+    <!--
+        <script src="src/ie8polyfill.js"></script>
+        <script src='src/jquery.js'></script>
+        <script src='src/jquery.json.js'></script>
         <script src="src/jquery-tmpl.js"></script>
+        <script src="src/components.js"></script>
+        <script src='src/app.module.js'></script>
         <script src='src/main.js'></script>
+    -->
+        
+    <script src="src/require.js" data-main="src/main" ></script>
+    
     </body>
 </html>

@@ -1,4 +1,18 @@
-(function ($) {
+(function (factory) {
+	if (typeof define === 'function' && define.amd) {
+                //console.log('AMD!');
+		// AMD
+		define(['jquery'], factory);
+	} else if (typeof exports === 'object') {
+                //console.log('CommonJS!');
+		// CommonJS
+		factory(require('jquery'));
+	} else {
+                //console.log('Browser globals!');
+		// Browser globals
+		factory(jQuery);
+	}
+}(function ($) {
     $.extend({
         replaceData: function (str, data) {
             var f = function (s, o) {
@@ -87,8 +101,9 @@
                             console.log('No bootstrap!');
                         }
                     };
-
-            $.service = service;
+            for(var name in service){
+                $[name] = service[name];
+            }           
             if (len > 0) {
                 for (var i = 0; i < len-1; i++) {
                     declarations[i].setNext(declarations[i+1].component);
@@ -96,6 +111,19 @@
                 bootstrap = declarations[0];
             }
             bootstrap.component();
+        },
+        bootstrapModule :function (func){
+            var _func = function (){
+                console.log('BootstrapModule is null!');
+            };
+            if(func){
+                _func = func; 
+            }
+            try {
+                _func();
+            }catch (e){
+                console.log(e);
+            }
         }
     });
 
@@ -125,4 +153,4 @@
         }
     });
 
-})(jQuery)
+}));
